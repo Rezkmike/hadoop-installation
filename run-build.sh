@@ -32,10 +32,14 @@ case "$ARCH" in
         ;;
 esac
 
+cd ~/hadoop
+
 # Unpack Hadoop and move to the home directory
-tar -xzvf ~/hadoop/$HADOOP_BIN
-rm -rf ~/hadoop/$HADOOP_BIN
-cp /root/hadoop/hadoop-3.3.6/bin/hadoop /usr/local/bin
+tar -xzvf $HADOOP_BIN
+#cp -r /root/hadoop/hadoop-3.3.6 /usr/local/bin/hadoop
+echo 'export PATH=$PATH:~/hadoop/hadoop-3.3.6/bin' >> ~/.bashrc
+echo 'export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")' >> ~/.bashrc
+. ~/.bashrc
 
 # Verify Hadoop installation
 hadoop version
