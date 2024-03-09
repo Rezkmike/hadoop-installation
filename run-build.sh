@@ -20,11 +20,12 @@ case "$ARCH" in
     "x86_64")
         wget http://apache.mirrors.pair.com/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz -P ~/hadoop/
 	HADOOP_BIN="hadoop-$HADOOP_VERSION.tar.gz"
+ 	HADOOP_DIR="hadoop-$HADOOP_VERSION"
         ;;
     "aarch64")
 	wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6-aarch64.tar.gz -P ~/hadoop/
 	HADOOP_BIN="hadoop-3.3.6-aarch64.tar.gz"
-	echo $HADOOP_BIN
+ 	HADOOP_DIR="hadoop-3.3.6-aarch64"
         ;;
     *)
         echo "Unsupported architecture: $ARCH"
@@ -32,14 +33,14 @@ case "$ARCH" in
         ;;
 esac
 
+# Change workdir
 cd ~/hadoop
 
 # Unpack Hadoop and move to the home directory
 tar -xzvf $HADOOP_BIN
-#cp -r /root/hadoop/hadoop-3.3.6 /usr/local/bin/hadoop
-echo 'export PATH=$PATH:~/hadoop/hadoop-3.3.6/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:~/hadoop/$HADOOP_DIR/bin' >> ~/.bashrc
 echo 'export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")' >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 # Verify Hadoop installation
 hadoop version
