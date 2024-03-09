@@ -15,8 +15,8 @@ This repository contains a bash script for automating the installation and basic
 To begin with the installation, first clone the repository:
 
 ```sh
-git clone https://github.com/Rezkmike/hadoop-install-script.git
-cd hadoop-install-script
+git clone https://github.com/Rezkmike/hadoop-installation.git
+cd hadoop-installation
 ```
 
 
@@ -24,8 +24,8 @@ cd hadoop-install-script
 Make the script executable and run it:
 
 ```sh
-chmod +x install_hadoop.sh
-./install_hadoop.sh
+chmod +x run-build.sh
+./run-build.sh
 ```
 
 
