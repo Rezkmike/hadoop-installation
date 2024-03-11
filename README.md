@@ -21,6 +21,12 @@ cd hadoop-installation
 
 
 ### Running the Script
+Before running the script, please run as root (as this script is for testing and beginner):
+
+```sh
+sudo -s
+```
+
 Make the script executable and run it:
 
 ```sh
@@ -28,6 +34,13 @@ chmod +x run-build.sh
 ./run-build.sh
 ```
 
+After successfully installed, need to source the `.bashrc` file to reload the `ENV` variables:
+
+```sh
+source ~/.bashrc
+```
+
+Now you may run `hadoop` command
 
 ### Configuration
 The script will perform the following tasks:
