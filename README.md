@@ -21,7 +21,7 @@ cd hadoop-installation
 
 
 ### Running the Script
-Before running the script, please run as root (as this script is for testing and beginner):
+Before running the script, please run as root (as this script is for testing):
 
 ```sh
 sudo -s
