@@ -43,10 +43,10 @@ tar -xzvf $HADOOP_BIN
 mv hadoop-$HADOOP_VER /usr/local/hadoop
 
 # Check Java_Home
-readlink -f /usr/bin/java | sed "s:bin/java::"
+JAVA_PATH=`readlink -f /usr/bin/java | sed "s:bin/java::"`
 
 # Replace JAVA_HOME env
-sed -i 's|# export JAVA_HOME=|export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64/|' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+sed -i 's|# export JAVA_HOME=|export JAVA_HOME='"${JAVA_PATH}"'|' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 
 # Run Hadoop
 /usr/local/hadoop/bin/hadoop
