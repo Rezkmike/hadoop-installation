@@ -46,7 +46,15 @@ mv hadoop-$HADOOP_VER /usr/local/hadoop
 JAVA_PATH=`readlink -f /usr/bin/java | sed "s:bin/java::"`
 
 # Replace JAVA_HOME env
+HADOOP_ENV_PATH='/usr/local/hadoop/etc/hadoop/hadoop-env.sh'
 sed -i 's|# export JAVA_HOME=|export JAVA_HOME='"${JAVA_PATH}"'|' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+
+# Add more env variable
+echo 'export HDFS_NAMENODE_USER=root' >> $HADOOP_ENV_PATH
+echo 'export HDFS_DATANODE_USER=root' >> $HADOOP_ENV_PATH
+echo 'export HDFS_SECONDARYNAMENODE_USER=root' >> $HADOOP_ENV_PATH
+echo 'export YARN_RESOURCEMANAGER_USER=root' >> $HADOOP_ENV_PATH
+echo 'export YARN_NODEMANAGER_USER=root' >> $HADOOP_ENV_PATH
 
 # Run Hadoop
 /usr/local/hadoop/bin/hadoop
