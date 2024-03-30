@@ -7,7 +7,7 @@ HADOOP_VERSION="3.2.3"
 apt-get update -y
 
 # Install Java
-apt-get install default-jdk wget openssh-server git -y
+apt-get install default-jdk wget openssh-server git net-tools -y
 
 # Check Java bersion
 java -version
