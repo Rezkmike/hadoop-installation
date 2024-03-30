@@ -4,6 +4,9 @@ TPL_PATH='./templates'
 HADOOP_PATH='/usr/local/hadoop/etc/hadoop/'
 HADOOP_BIN='/usr/local/hadoop/sbin'
 
+# Start SSH service
+service ssh start
+
 mv -f $TPL_PATH/hdfs-site.conf $HADOOP_PATH/hdfs-site.conf
 mv -f $TPL_PATH/core-site.conf $HADOOP_PATH/core-site.conf
 mv -f $TPL_PATH/mapred-site.conf $HADOOP_PATH/mapred-site.conf
