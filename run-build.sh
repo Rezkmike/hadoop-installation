@@ -19,7 +19,7 @@ case "$ARCH" in
         wget http://apache.mirrors.pair.com/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz -P /tmp
 	HADOOP_BIN="hadoop-$HADOOP_VERSION.tar.gz"
  	HADOOP_DIR="hadoop-$HADOOP_VERSION"
-  HADOOP_VER=$HADOOP_VERSION
+  	HADOOP_VER=$HADOOP_VERSION
         ;;
     "aarch64")
 	wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6-aarch64.tar.gz -P /tmp
