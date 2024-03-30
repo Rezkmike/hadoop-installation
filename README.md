@@ -30,7 +30,8 @@ sudo -s
 Make the script executable and run it:
 
 ```sh
-chmod +x run-build.sh
+chmod +x run-installation.sh
+chmod +x run-hdfs.sh
 ./run-installation.sh
 ./run-hdfs.sh
 ```
