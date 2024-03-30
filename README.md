@@ -31,7 +31,8 @@ Make the script executable and run it:
 
 ```sh
 chmod +x run-build.sh
-./run-build.sh
+./run-installation.sh
+./run-hdfs.sh
 ```
 
 After successfully installed, need to source the `.bashrc` file to reload the `ENV` variables:
