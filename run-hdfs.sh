@@ -15,5 +15,9 @@ mv -f $TPL_PATH/yarn-site.conf $HADOOP_PATH/yarn-site.conf
 # Test HDFS
 /usr/local/hadoop/bin/hdfs namenode –format
 
+# Create SSH Key
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
 # Run HDFS
 bash $HADOOP_BIN/start-all.sh
