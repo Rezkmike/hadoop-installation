@@ -15,6 +15,8 @@ This repository contains a bash script for automating the installation and basic
 To begin with the installation, first clone the repository:
 
 ```sh
+apt update
+apt install git -y
 git clone https://github.com/Rezkmike/hadoop-installation.git
 cd hadoop-installation
 ```
