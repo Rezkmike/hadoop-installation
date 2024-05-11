@@ -26,11 +26,7 @@ fi
 cat << EOF > /tmp/prepare.sql
 CREATE DATABASE WQD7007;
 USE WQD7007;
-CREATE TABLE churn (customerID varchar(20),
-  PaperlessBilling varchar(3),
-  PaymentMethod varchar(30),
-  MonthlyCharges numeric(8,2),
-  Churn varchar(3));
+CREATE TABLE churn (customerID varchar(20), PaperlessBilling varchar(3), PaymentMethod varchar(30), MonthlyCharges numeric(8,2), Churn varchar(3));
 EOF
 
 sudo mysql -u root < /tmp/prepare.sql
