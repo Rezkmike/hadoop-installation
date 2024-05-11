@@ -8,10 +8,8 @@ HADOOP_BIN='/usr/local/hadoop/bin'
 # Start SSH service
 service ssh start
 
-mv -f $TPL_PATH/hdfs-site.conf $HADOOP_PATH/hdfs-site.conf
-mv -f $TPL_PATH/core-site.conf $HADOOP_PATH/core-site.conf
-mv -f $TPL_PATH/mapred-site.conf $HADOOP_PATH/mapred-site.conf
-mv -f $TPL_PATH/yarn-site.conf $HADOOP_PATH/yarn-site.conf
+# Update template files
+cp -rf $TPL_PATH/* $HADOOP_PATH/
 
 # Test HDFS
 $HADOOP_BIN/hdfs namenode –format
@@ -22,4 +20,4 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 # Run HDFS
 bash $HADOOP_SBIN/start-all.sh
-$HADOOP_BIN/hfds fsck /
+$HADOOP_BIN/hdfs fsck /
