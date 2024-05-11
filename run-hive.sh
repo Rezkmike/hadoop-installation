@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt-get install -y mysql-server mysqlimport
+sudo apt-get install -y mysql-server
 
 # Check mysql service running
 SERVICE="mysql"
