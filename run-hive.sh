@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt-get install -y mysql-server
+sudo apt-get install -y mysql-server git
 
 # Check mysql service running
 SERVICE="mysql"
@@ -27,6 +27,16 @@ cat << EOF > /tmp/prepare.sql
 CREATE DATABASE WQD7007;
 USE WQD7007;
 CREATE TABLE churn (customerID varchar(20), PaperlessBilling varchar(3), PaymentMethod varchar(30), MonthlyCharges numeric(8,2), Churn varchar(3));
+UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';
 EOF
 
-sudo mysql -u root < /tmp/prepare.sql
+# Create mysql database
+sudo mysql -u root -p root < /tmp/prepare.sql
+
+# Import dataset into the dataset
+sudo mysqlimport -u root -p root \
+    --local \
+    --ignore-lines=1 \
+    --fields-terminated-by=, \
+    WQD7007 \
+    ./dataset/churn_reduced.csv
