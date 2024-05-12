@@ -31,7 +31,7 @@ UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';
 EOF
 
 # Create mysql database
-sudo mysql -u root -p root < /tmp/prepare.sql
+sudo mysql -u root < /tmp/prepare.sql
 
 # Import dataset into the dataset
 echo "root" | sudo mysqlimport -u root -p WQD7007 \
