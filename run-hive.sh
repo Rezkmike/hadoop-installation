@@ -43,7 +43,7 @@ sudo mysql -uroot -proot --local_infile=1 WQD7007 \
 # Download Hive
 wget -O /tmp/sqoop-1.4.7.tar.gz https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.tar.gz
 tar -xzf /tmp/sqoop-1.4.7.tar.gz
-cp -r sqoop-1.4.7.tar.gz $HOME/sqoop/
+cp -r sqoop-1.4.7 $HOME/sqoop/
 
 # Export path
 echo "export PATH=$PATH:$HOME/sqoop/bin" >> ~/.bashrc
@@ -52,10 +52,10 @@ echo "HADOOP_MAPRED_HOME=$HOME/hadoop" >> ~/.bashrc
 source ~/.bashrc
 
 # Update template
-cp -rf $HOME/sqoop/conf/sqoop-env-template.sh $HOME/sqoop/conf/sqoop-env.sh
+mv -f $HOME/sqoop/conf/sqoop-env-template.sh $HOME/sqoop/conf/sqoop-env.sh
 
 # Copy connector
-cp -rf ./connector/mysql-connector-java-5.1.47.jar $HOME/sqoop/lib
+cp ./connector/mysql-connector-java-5.1.47.jar $HOME/sqoop/lib
 
 sqoop import -connect jdbc:mysql://localhost/WQD7007 \
     -username root \
