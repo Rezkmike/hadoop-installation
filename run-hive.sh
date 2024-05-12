@@ -39,3 +39,27 @@ sudo mysql -uroot -proot < /tmp/prepare.sql
 sudo mysql -uroot -proot --local_infile=1 WQD7007 \
     -e \
     "LOAD DATA LOCAL INFILE './dataset/churn_reduced.csv' INTO TABLE churn FIELDS TERMINATED BY ','"
+
+# Download Hive
+wget -O /tmp/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz https://www-eu.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+tar -xzf /tmp/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+cp -r sqoop-1.4.7.bin__hadoop-2.6.0 $HOME/sqoop/
+
+# Export path
+echo "export PATH=$PATH:$HOME/sqoop/bin" >> ~/.bashrc
+echo "HADOOP_COMMON_HOME=$HOME/hadoop" >> ~/.bashrc
+echo "HADOOP_MAPRED_HOME=$HOME/hadoop" >> ~/.bashrc
+source ~/.bashrc
+
+# Update template
+cp -rf $HOME/sqoop/conf/sqoop-env-template.sh $HOME/sqoop/conf/sqoop-env.sh
+
+# Copy connector
+cp -rf ./connector/mysql-connector-java-5.1.47.jar $HOME/sqoop/lib
+
+sqoop import -connect jdbc:mysql://localhost/WQD7007 \
+    -username root \
+    -password root \
+    -table churn -m 1
+
+hdfs dfs -cat $HOME/churn/*
