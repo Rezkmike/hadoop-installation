@@ -27,6 +27,7 @@ cat << EOF > /tmp/prepare.sql
 CREATE DATABASE WQD7007;
 USE WQD7007;
 CREATE TABLE churn (customerID varchar(20), PaperlessBilling varchar(3), PaymentMethod varchar(30), MonthlyCharges numeric(8,2), Churn varchar(3));
+SET GLOBAL local_infile=1;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 FLUSH PRIVILEGES;
 EOF
