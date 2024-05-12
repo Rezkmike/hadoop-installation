@@ -27,11 +27,12 @@ cat << EOF > /tmp/prepare.sql
 CREATE DATABASE WQD7007;
 USE WQD7007;
 CREATE TABLE churn (customerID varchar(20), PaperlessBilling varchar(3), PaymentMethod varchar(30), MonthlyCharges numeric(8,2), Churn varchar(3));
-UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+FLUSH PRIVILEGES;
 EOF
 
 # Create mysql database
-sudo mysql -u root < /tmp/prepare.sql
+sudo mysql -u root -p root < /tmp/prepare.sql
 
 # Import dataset into the dataset
 echo "root" | sudo mysqlimport -u root -p WQD7007 \
