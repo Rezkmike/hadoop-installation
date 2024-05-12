@@ -32,10 +32,10 @@ FLUSH PRIVILEGES;
 EOF
 
 # Create mysql database
-sudo mysql -u root -p root < /tmp/prepare.sql
+sudo mysql -uroot -proot WQD7007 < /tmp/prepare.sql
 
 # Import dataset into the dataset
-echo "root" | sudo mysqlimport -u root -p WQD7007 \
+echo "root" | sudo mysqlimport -uroot -p WQD7007 \
     --local \
     --ignore-lines=1 \
     --fields-terminated-by=, \
