@@ -36,7 +36,6 @@ EOF
 sudo mysql -uroot -proot < /tmp/prepare.sql
 
 # Import dataset into the dataset
-sudo mysqlimport -uroot -proot WQD7007 \
-    --local \
-    --fields-terminated-by=, \
-    ./dataset/churn_reduced.csv
+mysql -uroot -proot --local_infile=1 WQD7007 \
+    -e \
+    "LOAD DATA LOCAL INFILE './dataset/churn_reduced.csv' INTO TABLE churn FIELDS TERMINATED BY ','"
