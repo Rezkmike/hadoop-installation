@@ -34,7 +34,7 @@ EOF
 sudo mysql -u root -p root < /tmp/prepare.sql
 
 # Import dataset into the dataset
-sudo mysqlimport -u root -p root \
+echo "root" | sudo mysqlimport -u root -p WQD7007 \
     --local \
     --ignore-lines=1 \
     --fields-terminated-by=, \
