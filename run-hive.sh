@@ -32,7 +32,7 @@ FLUSH PRIVILEGES;
 EOF
 
 # Create mysql database
-sudo mysql -uroot -proot WQD7007 < /tmp/prepare.sql
+sudo mysql -uroot -proot < /tmp/prepare.sql
 
 # Import dataset into the dataset
 echo "root" | sudo mysqlimport -uroot -p WQD7007 \
