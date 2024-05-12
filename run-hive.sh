@@ -36,9 +36,7 @@ EOF
 sudo mysql -uroot -proot < /tmp/prepare.sql
 
 # Import dataset into the dataset
-sudo mysqlimport -uroot -proot \
+sudo mysqlimport -uroot -proot WQD7007 \
     --local \
-    --ignore-lines=1 \
     --fields-terminated-by=, \
-    WQD7007 \
     ./dataset/churn_reduced.csv
