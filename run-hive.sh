@@ -27,7 +27,7 @@ cat << EOF > /tmp/prepare.sql
 CREATE DATABASE WQD7007;
 USE WQD7007;
 CREATE TABLE churn (customerID varchar(20), PaperlessBilling varchar(3), PaymentMethod varchar(30), MonthlyCharges numeric(8,2), Churn varchar(3));
-SET GLOBAL local_infile=1;
+SET GLOBAL local_infile=true;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 FLUSH PRIVILEGES;
 EOF
@@ -36,8 +36,8 @@ EOF
 sudo mysql -uroot -proot < /tmp/prepare.sql
 
 # Import dataset into the dataset
-echo "root" | sudo mysqlimport -uroot -proot WQD7007 \
-    --local-infile=1 \
+sudo mysqlimport -uroot -proot WQD7007 \
+    --local \
     --ignore-lines=1 \
     --fields-terminated-by=, \
     WQD7007 \
