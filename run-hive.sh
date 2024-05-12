@@ -41,9 +41,9 @@ sudo mysql -uroot -proot --local_infile=1 WQD7007 \
     "LOAD DATA LOCAL INFILE './dataset/churn_reduced.csv' INTO TABLE churn FIELDS TERMINATED BY ','"
 
 # Download Hive
-wget -O /tmp/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz https://www-eu.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
-tar -xzf /tmp/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
-cp -r sqoop-1.4.7.bin__hadoop-2.6.0 $HOME/sqoop/
+wget -O /tmp/sqoop-1.4.7.tar.gz https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.tar.gz
+tar -xzf /tmp/sqoop-1.4.7.tar.gz
+cp -r sqoop-1.4.7.tar.gz $HOME/sqoop/
 
 # Export path
 echo "export PATH=$PATH:$HOME/sqoop/bin" >> ~/.bashrc
